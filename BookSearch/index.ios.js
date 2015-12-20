@@ -27,7 +27,7 @@ class BookSearch extends Component {
     render() {
         return (
             <TabBarIOS selectedTab={this.state.selectedTab}>
-                 <TabBarIOS.Item
+                <TabBarIOS.Item
                     selected={this.state.selectedTab === 'featured'}
                     systemIcon="featured"
                     onPress={() => {
