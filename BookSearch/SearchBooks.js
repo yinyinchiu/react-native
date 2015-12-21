@@ -30,7 +30,7 @@ var styles = StyleSheet.create({
 	},
 	button: {
 		height: 36,
-		backgroundColor: '#f39c12'.
+		backgroundColor: '#f39c12',
 		borderRadius: 8,
 		justifyContent: 'center',
 		marginTop: 15
@@ -63,14 +63,14 @@ class SearchBooks extends Component {
 		super(props);
 		this.state = {
 			bookAuthor: '',
-			boolTitle: '',
+			bookTitle: '',
 			isLoading: false,
 			errorMessage: ''
 		};
 	}
 
     render() {
-    	var spinner = this.state.isLoading ? (<ActivityIndicatorIOS hidden='true' size='large'>) : (<View/>);
+    	var spinner = this.state.isLoading ? (<ActivityIndicatorIOS hidden='true' size='large'/>) : (<View/>);
 
         return (
             <View style={styles.container}>
@@ -96,13 +96,13 @@ class SearchBooks extends Component {
 
     bookTitleInput(event) {
     	this.setState({
-    		boolTitle: event.nativeEvent.text
+    		bookTitle: event.nativeEvent.text
     	});
     }
 
     bookAuthorInput(event) {
     	this.setState({
-    		boolAuthor: event.nativeEvent.text
+    		bookAuthor: event.nativeEvent.text
     	});
     }
 
@@ -144,14 +144,14 @@ class SearchBooks extends Component {
     				errorMessage: 'No results found'
     			});
     		}
-    		.catch(error => {
-    			this.setState({
-	    			isLoading: false,
-	    			error: error
-	    		});
-    		})
-    		.done();
     	})
+    	.catch(error => {
+			this.setState({
+    			isLoading: false,
+    			error: error
+    		});
+		})
+		.done();
     }
 
 }
