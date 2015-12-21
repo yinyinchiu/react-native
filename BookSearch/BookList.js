@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var BookDetail = require('./BookDetail');
 
 var {
 	Image,
@@ -85,9 +86,17 @@ class BookList extends Component {
 		.done();
 	}
 
+	showBookDetail(book) {
+	    this.props.navigator.push({
+		    title: book.volumeInfo.title,
+		    component: BookDetail,
+		    passProps: {book}
+	    });
+  	}
+
 	renderBook(book) {
 		return (
-			<TouchableHighlight>
+			<TouchableHighlight onPress={() => this.showBookDetail(book)}>
 				<View>
 					<View style={styles.container}>
 						<Image
